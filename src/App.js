@@ -1,25 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './Components/Navbar/Navbar';
+import Banner from './Components/Home/Banner';
+import Foods from './Components/Food/Foods';
+import { BrowserRouter } from 'react-router-dom';
+import { Container } from '@material-ui/core';
+import Menu from './Components/Menu/Menu';
+import SignUp from './Components/SignUp/SignUp';
+import FoodDetails from './Components/Food/FoodDetails';
+import Checkout from './Components/Checkout/Checkout';
+import CompleteOrder from './Components/CompleteOrder/CompleteOrder';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container fixed={true}>
+      <BrowserRouter>
+        <Navbar />
+        <CompleteOrder />
+        {/* <Menu /> */}
+        {/* <Checkout /> */}
+        {/* <FoodDetails /> */}
+        {/* <Banner /> */}
+        {/* <SignUp />
+        <Foods /> */}
+      </BrowserRouter>
+    </Container>
   );
 }
 
