@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#exclude firebase config 
+src/Firebase/firebaseConfig.js

@@ -1,10 +1,4 @@
-import {
-  Button,
-  ButtonGroup,
-  Divider,
-  Grid,
-  makeStyles,
-} from '@material-ui/core';
+import { Button, ButtonGroup, Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
 import { foods } from '../Food/fakeFoodData.js';
 const useStyle = makeStyles({

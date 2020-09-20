@@ -1,5 +1,6 @@
 import { Box, Grid, makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
+import { Link } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
   image: {
     height: '300px',
@@ -16,13 +17,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Food(props) {
   const classes = useStyles();
-  const { name, image, description, price } = props.food;
+  const { id, name, image, description, price } = props.food;
   return (
     <Grid item xs={12} md={6} lg={4}>
       <Box textAlign='center'>
-        <img src={image} alt={name} className={classes.image} />
+        <Link to={`/foods/${id}`} key={id}>
+          <img src={image} alt={name} className={classes.image} />
+        </Link>
         <Typography variant='h5'>{name}</Typography>
-        <Typography variant='p' className={classes.description}>
+        <Typography variant='body1' className={classes.description}>
           {description.slice(0, 25)}{' '}
           <span className={classes.more}>more..</span>
         </Typography>

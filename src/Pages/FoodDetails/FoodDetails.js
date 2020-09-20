@@ -1,44 +1,19 @@
-import {
-  Button,
-  ButtonGroup,
-  Grid,
-  makeStyles,
-  Typography,
-} from '@material-ui/core';
+import { Button, ButtonGroup, Grid, Typography } from '@material-ui/core';
 import React from 'react';
-import { foods } from './fakeFoodData';
+import { foods } from '../../Components/Food/fakeFoodData';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
-const useStyles = makeStyles((theme) => ({
-  grid: {
-    marginTop: '20px',
-  },
-
-  buttonGroup: {
-    marginLeft: '20px',
-    border: '1px solid black',
-    boxShadow: 'none',
-    borderRadius: '30px',
-  },
-  button: {
-    border: 'none',
-    boxShadow: 'none',
-  },
-  btnAdd: {
-    marginTop: '20px',
-    borderRadius: '30px',
-    padding: '10px 30px',
-  },
-}));
+import { fooDetailsStyle } from './FoodDetailsStyls';
+import { Link } from 'react-router-dom';
 
 export default function FoodDetails() {
-  const classes = useStyles();
+  const classes = fooDetailsStyle();
 
   const food = foods[0];
   return (
     <Grid container alignItems='center' justify='center'>
       <Grid item md={6}>
         <Typography variant='h3'>{food.name}</Typography>
-        <Typography variant='p'>{food.description}</Typography>
+        <Typography variant='body1'>{food.description}</Typography>
         <Grid container className={classes.grid}>
           <Typography variant='h4'>${food.price}</Typography>
 
@@ -48,15 +23,15 @@ export default function FoodDetails() {
             <Button className={classes.button}>+</Button>
           </ButtonGroup>
         </Grid>
-
-        <Button
-          variant='contained'
-          color='secondary'
-          className={classes.btnAdd}
-          startIcon={<ShoppingCartOutlinedIcon />}
-        >
-          Add
-        </Button>
+        <Link to='/checkout'>
+          <Button
+            variant='contained'
+            color='secondary'
+            className={classes.btnAdd}
+            startIcon={<ShoppingCartOutlinedIcon />}>
+            Add
+          </Button>
+        </Link>
       </Grid>
       <Grid item md={6}>
         <img src={food.image} alt={food.name} style={{ width: '100%' }} />
