@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-//import CO2 from './MaterialUIPractice/02/C02';
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

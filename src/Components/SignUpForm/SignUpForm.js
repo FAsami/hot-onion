@@ -2,21 +2,16 @@ import { Button, TextField, Typography } from '@material-ui/core';
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { signUpformStyle } from './SignUpFormStyle';
-import useForms from './useForms';
-import { firebaseApp } from '../../Firebase/firebaseConfig';
+import useForms from '../../Hooks/useForms';
 import { UserContext } from '../../Context/UserContext';
 
 function SignUpForm() {
   const [isNewUser, setIsNewUser] = useState(false);
-  const { user, setUser } = useContext(UserContext);
-  const { pathname, state } = useLocation();
-
-  const { from } = state || { from: { pathname: '/' } };
-
+  const { user } = useContext(UserContext);
+  const { pathname } = useLocation();
   const classes = signUpformStyle();
   const history = useHistory();
-
-  const { values, errors, isFormValid, handleChange, handleSubmit } = useForms(
+  const { values, loading, errors, handleChange, handleSubmit } = useForms(
     isNewUser
   );
 
@@ -24,60 +19,6 @@ function SignUpForm() {
     if (pathname === '/signup') setIsNewUser(true);
     else setIsNewUser(false);
   }, [pathname]);
-
-  const createNewUser = () => {
-    const user = {};
-    firebaseApp
-      .auth()
-      .createUserWithEmailAndPassword(values.email, values.password)
-      .then((result) => {
-        const currentUser = firebaseApp.auth().currentUser;
-        currentUser
-          .updateProfile({
-            displayName: values.username,
-          })
-          .then(() => {
-            user.name = result.user.displayName;
-          })
-          .catch((error) => {
-            user.errorMessage = error.message;
-          });
-        user.email = result.user.email;
-        setUser(user);
-      })
-      .catch((error) => {
-        user.errorMessage = error.message;
-        setUser(user);
-      });
-  };
-
-  const signInUser = () => {
-    firebaseApp
-      .auth()
-      .signInWithEmailAndPassword(values.email, values.password)
-      .then((res) => {
-        const user = {};
-        user.email = res.user.email;
-        user.name = res.user.displayName;
-        setUser(user);
-        history.replace(from);
-      })
-      .catch((error) => {
-        const user = {};
-        user.errorMessage = error.message;
-        setUser(user);
-      });
-  };
-
-  useEffect(() => {
-    if (isFormValid) {
-      if (isNewUser) {
-        createNewUser();
-      } else {
-        signInUser();
-      }
-    }
-  }, [isFormValid, isNewUser]);
 
   return (
     <form className={classes.root} onSubmit={(e) => handleSubmit(e)}>
@@ -92,6 +33,7 @@ function SignUpForm() {
             variant='outlined'
             onChange={handleChange}
             fullWidth
+            required
           />
           {errors.username && (
             <Typography color='error' variant='body2'>
@@ -109,6 +51,7 @@ function SignUpForm() {
         type='email'
         variant='outlined'
         fullWidth
+        required
       />
       {errors.email && (
         <Typography color='error' variant='body2'>
@@ -124,6 +67,7 @@ function SignUpForm() {
         variant='outlined'
         onChange={handleChange}
         fullWidth
+        required
       />
       {errors.password && (
         <Typography color='error' variant='body2'>
@@ -141,6 +85,7 @@ function SignUpForm() {
             variant='outlined'
             onChange={handleChange}
             fullWidth
+            required
           />
           {errors.password2 && (
             <Typography color='error' variant='body2'>
@@ -154,7 +99,8 @@ function SignUpForm() {
         color='secondary'
         fullWidth
         type='submit '
-        className={classes.button}>
+        className={classes.button}
+        disabled={loading}>
         Sign in
       </Button>
       <Typography

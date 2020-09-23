@@ -1,17 +1,12 @@
-import {
-  Button,
-  Divider,
-  Grid,
-  TextField,
-  Typography,
-} from '@material-ui/core';
+import { Button, Divider, TextField, Typography } from '@material-ui/core';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { chackOutFormStyle } from './ChackoutFormStyle';
 
 export default function CheckoutForm() {
   const classes = chackOutFormStyle();
   return (
-    <Grid sm={12} md={5}>
+    <>
       <Typography variant='h5'>Edit Delivery Details</Typography>
       <Divider />
       <form className={classes.root}>
@@ -40,16 +35,17 @@ export default function CheckoutForm() {
           multiline
           fullWidth
         />
-        <Button
-          variant='contained'
-          color='secondary'
-          fullWidth
-          type='submit'
-          className={classes.button}
-        >
-          Save and continue
-        </Button>
+        <Link to='/completeOrder'>
+          <Button
+            variant='contained'
+            color='secondary'
+            fullWidth
+            type='submit'
+            className={classes.button}>
+            Save and continue
+          </Button>
+        </Link>
       </form>
-    </Grid>
+    </>
   );
 }

@@ -24,12 +24,12 @@ export default function Food(props) {
         <Link to={`/foods/${id}`} key={id}>
           <img src={image} alt={name} className={classes.image} />
         </Link>
-        <Typography variant='h5'>{name}</Typography>
+        <Typography variant='h6'>{name}</Typography>
         <Typography variant='body1' className={classes.description}>
-          {description.slice(0, 25)}{' '}
-          <span className={classes.more}>more..</span>
+          {description.slice(0, 25)}
+          <span className={classes.more}> Read more..</span>
         </Typography>
-        <Typography variant='h4'>${price}</Typography>
+        <Typography variant='h5'>${price}</Typography>
       </Box>
     </Grid>
   );

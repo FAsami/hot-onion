@@ -1,9 +1,9 @@
 import { Grid, Typography } from '@material-ui/core';
 import React, { useContext } from 'react';
-import SignUpForm from './SignUpForm';
-import logo from '../Navbar/logo2.png';
-import GoogleSignInButton from '../GoogleSIgnInButton';
-import FacebookSignInButton from '../FacebookSignInButton';
+import SignUpForm from '../../Components/SignUp/SignUpForm';
+import logo from '../../img/logo.png';
+import GoogleSignInButton from '../../Components/GoogleSIgnInButton';
+import FacebookSignInButton from '../../Components/FacebookSignInButton';
 import { UserContext } from '../../Context/UserContext';
 
 export default function SignUp() {

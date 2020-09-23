@@ -1,10 +1,12 @@
 import { Typography } from '@material-ui/core';
 import React from 'react';
 
-export default function NotFound() {
+function Services() {
   return (
     <Typography variant='h3' align='center' m={5}>
-      Page Not Found
+      Services
     </Typography>
   );
 }
+
+export default Services;

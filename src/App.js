@@ -1,18 +1,19 @@
 import React from 'react';
 import Navbar from './Components/Navbar/Navbar';
-import Banner from './Components/Home/Banner';
-import Foods from './Components/Food/Foods';
+import Banner from './Components/Banner/Banner';
+import Foods from './Components/Foods/Foods';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Container } from '@material-ui/core';
 import Menu from './Components/Menu/Menu';
-import SignUp from './Components/SignUp/SignUp';
 import Checkout from './Pages/Checkout/Checkout';
-import CompleteOrder from './Components/CompleteOrder/CompleteOrder';
+import CompleteOrder from './Pages/CompleteOrder/CompleteOrder';
 import NotFound from './Components/NotFound/NotFound';
 import { CartProvider } from './Context/CartContext';
 import FoodDetails from './Pages/FoodDetails/FoodDetails';
 import { UserProvider } from './Context/UserContext';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import Home from './Pages/Home/Home';
+import SignUp from './Pages/SignUp/SignUp';
 
 function App() {
   return (
@@ -23,9 +24,7 @@ function App() {
             <Navbar />
             <Switch>
               <Route exact path='/'>
-                <Banner />
-                <Menu />
-                <Foods />
+                <Home />
               </Route>
               <PrivateRoute path='/checkout'>
                 <Checkout />
