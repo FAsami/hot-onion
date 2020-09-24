@@ -1,14 +1,21 @@
-import { Grid } from '@material-ui/core';
+import { Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
-import mapImage from '../../img/map.png';
 import bike from '../../img/bike.png';
 import FiberManualRecordRoundedIcon from '@material-ui/icons/FiberManualRecordRounded';
 import rider from '../../img/rider.png';
+import GoogleMap from '../../Components/GoogleMap/GoogleMap';
+
+const useStyle = makeStyles({
+  container: {
+    position: 'relative',
+  },
+});
 export default function CompleteOrder() {
+  const classes = useStyle();
   return (
     <Grid container>
-      <Grid item sm={12} md={8}>
-        <img src={mapImage} alt='Map' style={{ width: '100%' }} />
+      <Grid item sm={12} md={8} className={classes.container}>
+        <GoogleMap />
       </Grid>
       <Grid item sm={false} md={1} />
       <Grid item sm={12} md={3}>
@@ -17,32 +24,23 @@ export default function CompleteOrder() {
           alt='rider'
           style={{ height: '100px', width: '120px' }}
         />
-
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-          }}>
-          <span>
-            <FiberManualRecordRoundedIcon style={{ color: '#EC4849' }} />
-          </span>
-          <h3>Your location</h3>
-        </div>
+        <h3>
+          <FiberManualRecordRoundedIcon style={{ color: '#EC4849' }} />
+          Your location
+        </h3>
         <p>107 Rd No 8</p>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-          }}>
-          <span>
-            <FiberManualRecordRoundedIcon style={{ color: '#EC4849' }} />
-          </span>
-          <h3>Our Address : </h3>
-        </div>
+        <h3>
+          <FiberManualRecordRoundedIcon style={{ color: '#EC4849' }} />
+          Our Address :
+        </h3>
         <p>Gulshan, Dhaka</p>
         <h1>9:30</h1>
         <p>Estimated time to deliver</p>
-        <img src={rider} alt='Helmet' />
+        <img
+          src={rider}
+          alt='Helmet'
+          style={{ height: '100px', width: '100px' }}
+        />
       </Grid>
     </Grid>
   );

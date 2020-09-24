@@ -11,8 +11,8 @@ import {
 } from '@material-ui/core';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import CheckoutForm from '../../Components/Checkout/CheckoutForm';
-import OrderItem from '../../Components/Checkout/OrderItem';
+import CheckoutForm from '../../Components/CheckoutForm/CheckoutForm';
+import OrderedItem from '../../Components/OrderedItem/OrderedItem';
 import { CartContext } from '../../Context/CartContext';
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -33,7 +33,7 @@ export default function Checkout() {
         <Link to='/'>
           <Button
             variant='contained'
-            color='primary'
+            color='secondary'
             size='large'
             fullWidth
             className={classes.button}>
@@ -46,10 +46,20 @@ export default function Checkout() {
         <Typography variant='h6'>From : Gulshan Restura GPR</Typography>
         <Typography variant='body1'>Arring in 20-30 min </Typography>
         <Typography variant='body2'>107 Road No -8</Typography>
-
-        {cart.map((item) => (
-          <OrderItem key={item.id} food={item} />
-        ))}
+        {cart.length > 0 ? (
+          cart.map((item) => <OrderedItem key={item.id} food={item} />)
+        ) : (
+          <>
+            <Typography variant='h6' align='center'>
+              No items added
+            </Typography>
+            <Link to='/'>
+              <Button variant='contained' color='secondary'>
+                Add food
+              </Button>
+            </Link>
+          </>
+        )}
 
         <TableContainer>
           <Table>

@@ -2,7 +2,7 @@ import { Button, ButtonGroup, Grid } from '@material-ui/core';
 import React, { useContext } from 'react';
 import { CartContext } from '../../Context/CartContext';
 
-function OrderItem(props) {
+function OrderedItem(props) {
   const food = props.food;
   const { increaseAmount, decreaseAmount } = useContext(CartContext);
   return (
@@ -32,4 +32,4 @@ function OrderItem(props) {
     </Grid>
   );
 }
-export default OrderItem;
+export default OrderedItem;
