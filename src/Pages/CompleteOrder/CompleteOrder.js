@@ -41,6 +41,8 @@ export default function CompleteOrder() {
           alt='Helmet'
           style={{ height: '100px', width: '100px' }}
         />
+        <br />
+        Your rider :HAMIM SHOWDAGOR
       </Grid>
     </Grid>
   );

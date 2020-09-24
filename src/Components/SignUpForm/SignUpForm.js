@@ -111,8 +111,8 @@ function SignUpForm() {
           if (pathname === '/signup') history.replace('/login');
           if (pathname === '/login') history.replace('/signup');
         }}>
-        {isNewUser ? `Don't have an account ?` : `Already have an account ?`}
-        {isNewUser ? 'Sign up ' : 'Log In '}
+        {!isNewUser ? `Don't have an account ?` : `Already have an account ?`}
+        {!isNewUser ? 'Sign up ' : 'Log In '}
       </Typography>
     </form>
   );
