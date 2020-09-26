@@ -6,15 +6,14 @@ import rider from '../../img/rider.png';
 import GoogleMap from '../../Components/GoogleMap/GoogleMap';
 
 const useStyle = makeStyles({
-  container: {
-    position: 'relative',
-  },
+  mapGrid: { position: 'relative', height: '400px', width: '100%' },
 });
+
 export default function CompleteOrder() {
   const classes = useStyle();
   return (
     <Grid container>
-      <Grid item sm={12} md={8} className={classes.container}>
+      <Grid item sm={12} md={8} className={classes.mapGrid}>
         <GoogleMap />
       </Grid>
       <Grid item sm={false} md={1} />
