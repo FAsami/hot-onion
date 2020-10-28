@@ -14,6 +14,7 @@ A full-stack single page web application for ordering foods online.
 - Add items or remove items 
 - Register using credentials 
 - Register using facebook and google
+- Interactive google map
 - Fully responsive
 
 ### Technologies:
