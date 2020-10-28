@@ -23,7 +23,6 @@ const useStyles = makeStyles({
 
 export default function ServiceCard({ icon, image, title, description }) {
   const classes = useStyles();
-  console.log(icon);
   return (
     <Card className={classes.root}>
       <CardActionArea>

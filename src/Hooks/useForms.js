@@ -3,6 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../Context/UserContext';
 import validate from '../Utils/validateInfo';
 import { firebaseApp } from '../Firebase/firebaseConfig';
+import * as firebase from 'firebase/app';
 
 const useForm = (isNewUser) => {
   const { state } = useLocation();
@@ -61,7 +62,6 @@ const useForm = (isNewUser) => {
         user.name = values.username;
         user.email = result.user.email;
         setUser(user);
-        console.log(user);
         history.replace(from);
       })
       .catch((error) => {
@@ -77,9 +77,15 @@ const useForm = (isNewUser) => {
     if (isFormValid) {
       setLoading(true);
       if (isNewUser) {
-        createNewUser();
+        firebaseApp
+          .auth()
+          .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+          .then(() => createNewUser());
       } else {
-        signInUser();
+        firebaseApp
+          .auth()
+          .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+          .then(() => signInUser());
       }
     }
   };

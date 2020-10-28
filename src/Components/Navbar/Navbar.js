@@ -21,9 +21,6 @@ export default function Navbar() {
         .signOut()
         .then(() => {
           setUser({});
-        })
-        .catch((error) => {
-          console.log(error);
         });
     }
   };
