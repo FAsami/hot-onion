@@ -4,7 +4,7 @@
 
 
 
-# [Visit the web site](https://hot-onion-fasami.web.app/);
+# [Visit the web site ](https://hot-onion-fasami.web.app/)
 
 A full-stack single page web application for ordering foods online. 
 
